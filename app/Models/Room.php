@@ -20,4 +20,10 @@ class Room extends Model
     {
         return $this->belongsTo(Topic::class, 'topic_id');
     }
+
+      
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'room_id');
+    }
 }

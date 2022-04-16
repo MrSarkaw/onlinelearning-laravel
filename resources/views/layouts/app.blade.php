@@ -63,14 +63,16 @@
     </div>
 
     <div>
-        
-        <div class="w-4/12 mx-auto">
-            @if($errors->any())
-                @foreach ($errors->all() as $row )
-                    <p class="text-center mt-3  text-white bg-red-700 rounded p-1">{{ $row }}</p>
-                @endforeach 
-            @endif
-        </div>
+       
+        @if(Route::currentRouteName() != 'show')
+            <div class="w-4/12 mx-auto">
+                @if($errors->any())
+                    @foreach ($errors->all() as $row )
+                        <p class="text-center mt-3  text-white bg-red-700 rounded p-1">{{ $row }}</p>
+                    @endforeach 
+                @endif
+            </div>
+        @endif
         @yield('content')
     </div>
 

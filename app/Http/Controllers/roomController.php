@@ -51,7 +51,11 @@ class roomController extends Controller
 
     public function show($id)
     {
-        //
+        $room = Room::where('id', $id)->with(['user', 'topic', 'messages' => function($message){
+            $message->with('user');
+        }])->firstOrFail();
+
+        return view('pages.room.show', compact('room'));
     }
 
    
@@ -71,4 +75,5 @@ class roomController extends Controller
     {
         //
     }
+
 }
