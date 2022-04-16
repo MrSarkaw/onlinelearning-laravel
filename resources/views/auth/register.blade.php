@@ -2,13 +2,7 @@
 
 @section('content')
 
-<div class="w-4/12 mx-auto">
-    @if($errors->any())
-        @foreach ($errors->all() as $row )
-            <p class="text-center mt-3  text-white bg-red-700 rounded p-1">{{ $row }}</p>
-        @endforeach
-    @endif
-</div>
+
 
 <form method="post" class="mt-2" action="register">
     @csrf
