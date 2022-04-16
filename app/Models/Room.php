@@ -26,4 +26,10 @@ class Room extends Model
     {
         return $this->hasMany(Message::class, 'room_id');
     }
+
+        
+    public function particpanties()
+    {
+        return $this->hasMany(Particpant::class, 'room_id');
+    }
 }

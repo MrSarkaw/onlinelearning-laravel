@@ -87,30 +87,27 @@
         <div class="w-3/12">
             <div class="rounded overflow-hidden text-white">
                 <div class="p-4 uppercase boxColor font-bold">
-                    PARTICIPANTS <span class="text-cyan-400 text-xs">(<%= room.particpanties.length %> Joined)</span>
+                    PARTICIPANTS <span class="text-cyan-400 text-xs">({{ count($room->particpanties) }} Joined)</span>
                 </div>
                 <div class="mainColor p-2 h-screen overflow-y-scroll">
                     <div class="p-2">
-                        <% if(room.particpanties.length > 0){ %>
-                            <% room.particpanties.forEach((userParticpanties)=>{ %>
+                        @foreach ($room->particpanties as $row)
                                 <div class="flex items-center my-2 justify-between">
                                     <div>
                                         <div class="flex items-center space-x-3">
-                                            <img style="background-image:url('/images/<%= userParticpanties.user.dataValues.image %>')" class="w-10 h-10 coverImg rounded-full" alt="">
+                                            <img style="background-image:url('/images/{{ $row->user->image }}')" class="w-10 h-10 coverImg rounded-full" alt="">
                                             <div class="text-sm">
                                                 <p class="text-sm">
-                                                    <%= userParticpanties.user.dataValues.name %>
+                                                    {{ $row->user->name }}
                                                 </p>
                                                 <a href="/profile/<%= userParticpanties.user.dataValues.id %>" class=" text-cyan-500">
-                                                    <%= userParticpanties.user.dataValues.email %>
+                                                    {{ $row->user->email }}
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <% }) %>
-                        <% } %>
-                       
+                        @endforeach
                     </div> 
                 </div>
             </div>

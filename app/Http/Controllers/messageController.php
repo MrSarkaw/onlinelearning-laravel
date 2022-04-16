@@ -19,6 +19,12 @@ class messageController extends Controller
 
         Room::findOrFail($request->room_id);
 
+        $check = Auth::user()->particpanties()->where('room_id', $request->room_id)->count();
+        
+        if($check == 0){
+            Auth::user()->particpanties()->create($request->only('room_id'));
+        }
+
         Auth::user()->messages()->create($request->only('message', 'room_id'));
 
         return redirect()->back();
@@ -27,7 +33,6 @@ class messageController extends Controller
 
     public function destroy($id){
         Auth::user()->messages()->findOrFail($id)->delete();
-
         return redirect()->back();
     }
 }
