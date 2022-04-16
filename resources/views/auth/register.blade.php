@@ -1,77 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<div class="w-4/12 mx-auto">
+    @if($errors->any())
+        @foreach ($errors->all() as $row )
+            <p class="text-center mt-3  text-white bg-red-700 rounded p-1">{{ $row }}</p>
+        @endforeach
+    @endif
+</div>
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+<form method="post" class="mt-2" action="register">
+    @csrf
+    <div class="w-4/12 mx-auto rounded-lg text-white mainColor overflow-hidden">
+        <div class="p-4 text-center uppercase boxColor font-bold text-white">
+           Register
+        </div>
+        <div class="py-5 px-5">
+            <p class="text-center mb-4">Find your study partner</p>
+          
+            
+            <div class="mt-5">
+                <p>name</p>
+                <input type="text" value="{{ old('name') }}" name="name" placeholder="name" class='bg-transparent p-2 w-full  focus:outline-none rounded border border-gray-100/20'>
+            </div>
+            
+       
+           
+            <div class="mt-5">
+                <p>email</p>
+                <input type="email" value="{{ old('email') }}" name="email" placeholder="email" class='bg-transparent p-2 w-full  focus:outline-none rounded border border-gray-100/20'>
+            </div>
+            
+       
+           
+            <div class="mt-5">
+                <p>password</p>
+                <input type="password" name="password" placeholder="*****" class='bg-transparent p-2 w-full  focus:outline-none rounded border border-gray-100/20'>
+            </div>
+       
+           
+            <div class="mt-5">
+                <p>password confirmation</p>
+                <input type="password" name="password_confirmation" placeholder="*****" class='bg-transparent p-2 w-full  focus:outline-none rounded border border-gray-100/20'>
+            </div>
+            
+            <div class="mt-10">
+                <button  class="bg-cyan-500 py-2 px-4 rounded text-gray-700"> <i class="fas fa-lock"></i> Register</button>
+            </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div class="mt-10 text-center">
+                <p>Have you signed up?</p>
+                <a href="{{ route('login') }}">Login</a>
             </div>
         </div>
     </div>
-</div>
+</form>
 @endsection

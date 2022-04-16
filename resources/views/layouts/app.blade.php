@@ -15,69 +15,63 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div class="mainColor py-5">
+        <div class="flex flex-wrap items-center text-white font-bold justify-between w-10/12 mx-auto">
+            <div class="space-x-20 w-8/12 flex items-center">
+                <a href="/" class="text-2xl">OnlineLearning</a>
+                <div class="py-3 px-2 w-5/12 searchColor rounded space-x-3 flex items-center">
+                    <form method="get" class="w-full">
+                        {{-- <% if(typeof(q) != 'undefined'){ %> --}}
+                            <i class="fas fa-search"></i>  
+                            <input type="text" value="<%= q? q:'' %>" class="bg-transparent w-10/12 focus:outline-none" placeholder="search" name="q" id="">
+                        {{-- <% }else{ %> --}}
+                            {{-- <i class="fas fa-search"></i>  
+                            <input type="text" class="bg-transparent w-10/12 focus:outline-none" placeholder="search" name="q" id=""> --}}
+                        {{-- <% } %> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                    </form>
                 </div>
             </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <div class="relative">
+                @guest    
+                    <a href="/login"> <i class="fas fa-user"></i> Login</a>
+                @endguest               
+                
+                @auth
+                <button onclick="modalFun()" class="flex focus:outline-none font-bold items-center space-x-3">
+                    <img style="background-image:url('/images/{{ Auth::user()->image }}')" class="w-10 h-10 coverImg rounded-full" alt="">
+                    <p class="text-sm">{{ Auth::user()->name }}</p>
+                </button>
+                <div class="w-40 py-5 shadow-xl hidden absolute top-14 p-2 rounded text-center grid gap-y-3 color text-xs" id="modal">
+                    
+                    <a href="/profile/<%= user.id %>" >Profile</a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button >logout</button>
+                    </form>
+                    
+                </div>
+                @endauth
+            </div>
+        </div>
+    
     </div>
+
+    <div>
+        @yield('content')
+    </div>
+
 </body>
+
+
+<script>
+    let modalFun = ()=>{
+        document.getElementById('modal').classList.toggle('hidden')
+    };
+</script>
 </html>
