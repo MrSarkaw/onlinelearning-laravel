@@ -13,8 +13,8 @@ class roomController extends Controller
    
     public function index()
     {
-        $room = Room::with('user', 'topic')->get();
-        return view('pages.room.index');
+        $rooms = Room::with('user', 'topic')->get();
+        return view('pages.room.index', compact("rooms"));
     }
 
     

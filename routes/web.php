@@ -5,6 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::resource('/',roomController::class);
+Route::resource('/',roomController::class)->parameters([''=>"room"]);
 Auth::routes();
 

@@ -68,7 +68,7 @@
             @if($errors->any())
                 @foreach ($errors->all() as $row )
                     <p class="text-center mt-3  text-white bg-red-700 rounded p-1">{{ $row }}</p>
-                @endforeach
+                @endforeach 
             @endif
         </div>
         @yield('content')
