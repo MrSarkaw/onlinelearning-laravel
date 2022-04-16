@@ -5,10 +5,10 @@
                 <div class="flex text-gray-100/70 items-center justify-between">
                     <div>
                         <a href="/profile/<%= element.user.dataValues.id %>" class="flex items-center space-x-3">
-                            <img style="background-image:url('/images/{{ Auth::user()->image }}')" class="w-8 h-8 coverImg rounded-full" alt="">
+                            <img style="background-image:url('/images/{{ $row->user->image }}')" class="w-8 h-8 coverImg rounded-full" alt="">
                             <div class="text-sm">
                                 <p>
-                                   {{Auth::user()->name}}
+                                   {{$row->user->name}}
                                 </p>
                             
                             </div>

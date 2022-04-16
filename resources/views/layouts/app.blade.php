@@ -28,7 +28,7 @@
                     <form method="get" class="w-full">
                         {{-- <% if(typeof(q) != 'undefined'){ %> --}}
                             <i class="fas fa-search"></i>  
-                            <input type="text" value="<%= q? q:'' %>" class="bg-transparent w-10/12 focus:outline-none" placeholder="search" name="q" id="">
+                            <input type="text" value="" class="bg-transparent w-10/12 focus:outline-none" placeholder="search" name="q" id="">
                         {{-- <% }else{ %> --}}
                             {{-- <i class="fas fa-search"></i>  
                             <input type="text" class="bg-transparent w-10/12 focus:outline-none" placeholder="search" name="q" id=""> --}}
