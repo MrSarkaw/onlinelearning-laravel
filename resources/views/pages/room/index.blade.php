@@ -2,7 +2,7 @@
 @section('content')
 <div class="w-10/12 mx-auto mt-4 flex justify-between flex-wrap">
     <div class="w-2/12 ">
-        <x-topic :rooms="count($rooms)" :topics="$topics" />
+        <x-topic :rooms="$room_count" :topics="$topics" />
     </div>
     <div class="w-7/12 pl-5 text-xl">
         <div class="flex items-center justify-between">

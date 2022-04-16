@@ -17,15 +17,16 @@ class roomController extends Controller
         if($request->q){
             $rooms = Room::with('user', 'topic')->whereHas('topic', function($topic) use($request){
                 $topic->where('name', $request->q);
-            })->orWhere("title","like","%".$request->q."%")->get();
+            })->orWhere("title","like","%".$request->q."%")->latest()->get();
         }else{
-            $rooms = Room::with('user', 'topic')->get();
+            $rooms = Room::with('user', 'topic')->latest()->get();
         }
 
+        $room_count = Room::count();
 
         $topics = Topic::withCount('rooms')->get();
 
-        return view('pages.room.index', compact("rooms", "topics"));
+        return view('pages.room.index', compact("rooms", "topics", "room_count"));
     }
 
     
