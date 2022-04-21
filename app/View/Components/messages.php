@@ -12,12 +12,10 @@ class messages extends Component
      * @return void
      */
 
-     public $user = '';
      public $messages = [];
 
-    public function __construct($messages, $user)
+    public function __construct($messages)
     {
-        $this->user = $user;
         $this->messages = $messages;
     }
 

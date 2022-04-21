@@ -26,7 +26,7 @@
         <x-room :rooms="$profile->rooms " />
     </div>
     <div class="w-3/12 pl-5">
-            <x-messages :messages="$profile->messages" :user="$profile"/>
+            <x-messages :messages="$profile->messages" />
      </div>
 </div>
 

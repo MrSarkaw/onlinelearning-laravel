@@ -12,7 +12,7 @@ class profileController extends Controller
     public function index($id){
 
         $profile = User::where('id', $id)->with(['rooms', 'messages' => function($q){
-            $q->with('room');
+            $q->with('room', 'user');
         }])->firstOrFail();
         $topics = Topic::withCount('rooms')->get();
         $rooms = Room::count();

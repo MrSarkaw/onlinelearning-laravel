@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\roomRequest;
+use App\Models\Message;
 use App\Models\Room;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class roomController extends Controller
 
         $topics = Topic::withCount('rooms')->get();
 
-        return view('pages.room.index', compact("rooms", "topics", "room_count"));
+        $messages = Message::with('user')->get();
+
+        return view('pages.room.index', compact("rooms", "topics", "room_count", 'messages'));
     }
 
     

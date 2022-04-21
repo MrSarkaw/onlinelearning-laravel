@@ -19,7 +19,7 @@
         <x-room :rooms="$rooms" />
     </div>
     <div class="w-3/12 pl-5">
-        {{-- <%- include('../component/message.ejs') %> --}}
+        <x-messages :messages="$messages"/>
      </div>
 </div>
 @endsection

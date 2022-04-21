@@ -12,7 +12,7 @@
                             <div class="text-sm">
                                 <p>
                                     <a href="{% url 'profile' message.user.id %}">
-                                        {{ $user->name }}
+                                        {{ $row->user->name }}
                                     </a>
                                 </p>
                                 <p class="text-xs">
@@ -23,7 +23,7 @@
                     </div>
                     <div>
                        @auth
-                            @if(Auth::id() == $user->id)
+                            @if(Auth::id() == $row->user->id)
                                 <a href="/message/delete/<%= element.id %>"> <i class="fas fa-times"></i> </a>
                             @endif
                      @endauth
