@@ -4,7 +4,7 @@
             <div class="rounded-xl mainColor p-3">
                 <div class="flex text-gray-100/70 items-center justify-between">
                     <div>
-                        <a href="/profile/<%= element.user.dataValues.id %>" class="flex items-center space-x-3">
+                        <a href="{{ route('profile', ['id' => $row->user->id]) }}" class="flex items-center space-x-3">
                             <img style="background-image:url('/images/{{ $row->user->image }}')" class="w-8 h-8 coverImg rounded-full" alt="">
                             <div class="text-sm">
                                 <p>
