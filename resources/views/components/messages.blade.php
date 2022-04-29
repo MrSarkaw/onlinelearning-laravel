@@ -24,12 +24,18 @@
                     <div>
                        @auth
                             @if(Auth::id() == $row->user->id)
-                                <a href="/message/delete/<%= element.id %>"> <i class="fas fa-times"></i> </a>
+                                <form method="POST" action="{{ route('message.destroy', ['id'=>$row->id]) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button>
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
                             @endif
                      @endauth
                     </div>
                 </div>
-                <p class="text-sm mt-4 text-gray-100/50">replaied to post <a class="text-cyan-400" href="/room/show/<%= element.roomId %>">{{ $row->room->title }}</a></p>
+                <p class="text-sm mt-4 text-gray-100/50">replaied to post <a class="text-cyan-400" href="{{ route('show', ['room'=>$row->room_id]) }}">{{ $row->room->title }}</a></p>
                 <div class="bodyColor mt-1 text-gray-100/70 rounded p-2 text-xs">
                     {{ $row->message }}
                 </div>

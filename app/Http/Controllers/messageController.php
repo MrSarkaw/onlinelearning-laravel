@@ -35,4 +35,6 @@ class messageController extends Controller
         Auth::user()->messages()->findOrFail($id)->delete();
         return redirect()->back();
     }
+
+    
 }

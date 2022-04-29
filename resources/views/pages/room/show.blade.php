@@ -6,14 +6,14 @@
         <div class="w-9/12 rounded-lg text-white mainColor overflow-hidden">
             <div class="p-4 uppercase boxColor font-bold flex justify-between items-center">
                 <div>
-                    <button  onclick="window.history.back()" class="focus:outline-none"><i class="fas fa-arrow-left"></i></button> STUDY ROOM
+                    <a href="{{ route('index') }}" class="focus:outline-none"><i class="fas fa-arrow-left"></i></a> STUDY ROOM
                 </div>
                 <div class="space-x-4 flex">
                     @auth    
                      @if(Auth::id() == $room->user_id)
                         <a href="{{ route('edit', ['room'=>$room->id]) }}" class="focus:outline-none"><i class="fas fa-pen"></i></a>
-                        <form action="{{ route('update', ['room'=>$room->id]) }}" method="post">
-                            @method('PUT')
+                        <form action="{{ route('destroy', ['room'=>$room->id]) }}" method="post">
+                            @method('delete')
                             @csrf
                             <button><i class="fas fa-trash"></i></button>
                         </form>

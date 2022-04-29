@@ -66,19 +66,28 @@ class roomController extends Controller
    
     public function edit($id)
     {
-        //
+        $topics = Topic::all();
+        $data = Auth::user()->rooms()->findOrFail($id);
+        return view('pages.room.form', ['room'=>$data, 'topics'=> $topics]);
     }
 
  
     public function update(Request $request, $id)
     {
-        //
+        $topic = Topic::firstOrCreate(['name' => $request->topic]);
+      
+        $request->merge(['topic_id' => $topic->id]);
+  
+        Auth::user()->rooms()->findOrFail($id)->update($request->only('title', 'topic_id', 'description'));
+  
+        return redirect('/');
     }
 
    
     public function destroy($id)
     {
-        //
+        Auth::user()->rooms()->findOrFail($id)->delete();
+        return redirect('/');
     }
 
 }
