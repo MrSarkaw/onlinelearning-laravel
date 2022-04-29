@@ -49,7 +49,7 @@
                 </button>
                 <div class="w-40 py-5 shadow-xl hidden absolute top-14 p-2 rounded text-center grid gap-y-3 color text-xs" id="modal">
                     
-                    <a href="/profile/<%= user.id %>" >Profile</a>
+                    <a href="{{ route('profile', ['id'=>Auth::id()]) }}" >Profile</a>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button >logout</button>

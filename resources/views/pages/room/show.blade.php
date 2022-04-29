@@ -100,7 +100,7 @@
                                                 <p class="text-sm">
                                                     {{ $row->user->name }}
                                                 </p>
-                                                <a href="/profile/<%= userParticpanties.user.dataValues.id %>" class=" text-cyan-500">
+                                                <a href="{{ route('profile', ['id'=>$row->user->id]) }}" class=" text-cyan-500">
                                                     {{ $row->user->email }}
                                                 </a>
                                             </div>
