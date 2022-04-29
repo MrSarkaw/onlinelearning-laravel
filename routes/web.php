@@ -14,6 +14,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
+Route::get('profile-edit', [profileController::class, 'edit'])->name('profileedit');
+Route::put('profile-update', [profileController::class, 'update'])->name('profileupdate');
 
 Route::resource('/',roomController::class, [ 'parameters' => [
     '' => 'room'

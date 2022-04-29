@@ -7,12 +7,12 @@
     </div>
     <div class="w-7/12 pl-5 text-xl">
        <div class="text-center text-white">
-           <img style="background-image:url('')" class="w-20 h-20 mx-auto coverImg rounded-full" alt="">
+           <img style="background-image:url('{{ asset('images/'.Auth::user()->image) }}')" class="w-20 h-20 mx-auto coverImg rounded-full" alt="">
            <p class="text-2xl mt-2">{{ $profile->name }}</p>
            <p class=" my-2">{{ $profile->username }}</p>
            @auth
-                @if(request()->get('id') == Auth::id())
-                    <a href="{% url 'profileEdit' %}" class="px-4 border-2 border-cyan-500 text-cyan-500 rounded-full py-1 ">Edit Profile</a>
+                @if($profile->id == Auth::id())
+                    <a href="{{ route('profileedit') }}" class="px-4 border-2 border-cyan-500 text-cyan-500 rounded-full py-1 ">Edit Profile</a>
                 @endif
            @endauth
        </div>
