@@ -8,7 +8,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <div class="flex items-center space-x-3">
-                            <img style="background-image:url('/images/<%= element.user.dataValues.image %>')" class="w-8 h-8 coverImg rounded-full" alt="">
+                            <img style="background-image:url('{{ asset('images/'.$row->user->image) }}')" class="w-8 h-8 coverImg rounded-full" alt="">
                             <div class="text-sm">
                                 <p>
                                     <a href="{% url 'profile' message.user.id %}">
