@@ -7,7 +7,7 @@
     </div>
     <div class="w-7/12 pl-5 text-xl">
        <div class="text-center text-white">
-           <img style="background-image:url('{{ asset('images/'.Auth::user()->image) }}')" class="w-20 h-20 mx-auto coverImg rounded-full" alt="">
+           <img style="background-image:url('{{ asset('images/'.$profile->image) }}')" class="w-20 h-20 mx-auto coverImg rounded-full" alt="">
            <p class="text-2xl mt-2">{{ $profile->name }}</p>
            <p class=" my-2">{{ $profile->username }}</p>
            @auth

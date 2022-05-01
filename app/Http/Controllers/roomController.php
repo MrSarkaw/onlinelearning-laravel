@@ -16,11 +16,11 @@ class roomController extends Controller
     {
         $rooms = [];
         if($request->q){
-            $rooms = Room::with('user', 'topic')->whereHas('topic', function($topic) use($request){
+            $rooms = Room::with('user', 'topic')->withCount('particpanties')->whereHas('topic', function($topic) use($request){
                 $topic->where('name', $request->q);
             })->orWhere("title","like","%".$request->q."%")->latest()->get();
         }else{
-            $rooms = Room::with('user', 'topic')->latest()->get();
+            $rooms = Room::with('user', 'topic')->withCount('particpanties')->latest()->get();
         }
 
         $room_count = Room::count();

@@ -27,7 +27,7 @@
                 <div class="flex mt-4 text-sm text-gray-100/70 items-center justify-between">
                     <div>
                         <p>
-                            <i class="fas fa-users"></i>    1 joiend
+                            <i class="fas fa-users"></i>    {{ $row->particpanties_count }} joiend
                         </p>
                     </div>
                     <div class=" flex space-x-2">
